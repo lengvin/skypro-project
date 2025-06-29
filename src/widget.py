@@ -16,6 +16,9 @@ def mask_account_card(card_data: str) -> str:
 
 
 def get_date(full_date: str) -> str:
+    """
+    получение даты в формате ДД.ММ.ГГГГ
+    """
     date_parts = full_date.split("T")
     date = date_parts[0].split("-")
     date.reverse()
