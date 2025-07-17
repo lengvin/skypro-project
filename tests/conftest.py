@@ -2,25 +2,28 @@ import pytest
 
 
 @pytest.fixture
-def card_number():
-    return '7000 79** **** 6361'
+def card_numbers():
+    return [
+        (7000792289606361, '7000 79** **** 6361'),
+        (3928457690236251, '3928 45** **** 6251'),
+        (5495759023457075, '5495 75** **** 7075')
+    ]
 
 
 @pytest.fixture
-def account_number():
-    return '**4305'
+def account_numbers():
+    return [
+        (73654108430135874305, '**4305'),
+        (12332489832489834924, '**4924'),
+        (53454358794538978775, '**8775')
+    ]
 
 
-@pytest.fixture
-def card_data():
-    return 'Visa Platinum 7000 79** **** 6361'
-
-
-@pytest.fixture
-def account_data():
-    return 'Счет **4305'
-
-
-@pytest.fixture
-def date_data():
-    return '11.03.2024'
+# @pytest.fixture
+# def bank_cards():
+#     return [
+#         ('Visa Platinum 7000792289606361', 'Visa Platinum 7000 79** **** 6361'),
+#         ('Счет 73654108430135874305', 'Счет **4305'),
+#         ('Maestro 7000792289606361', 'Maestro 7000 79** **** 6361'),
+#         ('Счет 45930725495749350875', 'Счет **0875')
+#     ]
