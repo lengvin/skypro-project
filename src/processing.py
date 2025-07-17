@@ -1,4 +1,4 @@
-from widget import get_date
+from src import widget
 
 
 def filter_by_state(list_of_data: list, state: str = "EXECUTED") -> list:
@@ -17,7 +17,7 @@ def sort_by_date(list_of_data: list, _reverse: bool = True) -> list:
     """
     фильтрация данных по дате
     """
-    key_to_sort = lambda x: int("".join(reversed(get_date(x["date"]).split("."))))
+    key_to_sort = lambda x: int("".join(reversed(widget.get_date(x["date"]).split("."))))
     sorted_list = sorted(list_of_data, key=key_to_sort, reverse=_reverse)
 
     return sorted_list
