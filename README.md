@@ -10,3 +10,7 @@
 ```
 git clone https://github.com/lengvin/skypro-project.git
 ```
+
+## Тестирование
+
+Все модули покрыты тестами на 100%
