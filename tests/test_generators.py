@@ -12,8 +12,9 @@ def test_filter_by_currency(transactions_example, usd_filtered_transactions, rub
         assert next(usd_filter) == usd_filtered_transactions[i]
         assert next(rub_filter) == rub_filtered_transactions[i]
 
-    assert next(eur_filter) == 'Конец фильтрации транзакций'
-    assert next(empty_filter) == 'Конец фильтрации транзакций'
+    with pytest.raises(StopIteration):
+        next(eur_filter)
+        next(empty_filter)
 
 
 def test_transaction_descriptions(transactions_example, descriptions_result):
@@ -22,8 +23,9 @@ def test_transaction_descriptions(transactions_example, descriptions_result):
     for i in range(5):
         assert next(descriptions) == descriptions_result[i]
 
-    assert next(descriptions) == 'В списке больше нет транзакций'
-    assert next(empty_descriptions) == 'В списке больше нет транзакций'
+    with pytest.raises(StopIteration):
+        next(descriptions)
+        next(empty_descriptions)
 
 
 @pytest.mark.parametrize('start_num, end_num, result', [
