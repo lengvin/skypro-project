@@ -12,8 +12,8 @@ def test_filter_by_currency(transactions_example, usd_filtered_transactions, rub
         assert next(usd_filter) == usd_filtered_transactions[i]
         assert next(rub_filter) == rub_filtered_transactions[i]
 
-    assert next(eur_filter) == 'В данном списке нет указанных транзакций'
-    assert next(empty_filter) == 'В данном списке нет указанных транзакций'
+    assert next(eur_filter) == 'Конец фильтрации транзакций'
+    assert next(empty_filter) == 'Конец фильтрации транзакций'
 
 
 def test_transaction_descriptions(transactions_example, descriptions_result):
