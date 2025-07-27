@@ -6,7 +6,7 @@ from src.decorators import log
 @pytest.mark.parametrize('test_data', [
     (1, 2, f'example_func ok. результат выполнения: \n 3'),
     (3, 3, f'example_func ok. результат выполнения: \n 6'),
-    (1, '1', f"example_func error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '1')\n")
+    (1, '1', "example_func error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '1'), {}")
 ])
 def test_console_log(test_data, capsys):
     a1, b1, result = test_data
@@ -23,7 +23,7 @@ def test_console_log(test_data, capsys):
 @pytest.mark.parametrize('test_data', [
     (1, 2, f'example_func ok. результат выполнения: \n 3'),
     (3, 3, f'example_func ok. результат выполнения: \n 6'),
-    (1, '1', f"example_func error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '1') \n")
+    (1, '1', "example_func error: unsupported operand type(s) for +: 'int' and 'str'. Inputs: (1, '1'), {}")
 ])
 def test_file_log(test_data):
     a1, b1, result = test_data
