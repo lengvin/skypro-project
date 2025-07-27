@@ -12,15 +12,15 @@ def log(filename=None):
             if filename:
                 try:
                     result = func(*args, **kwargs)
-                    with open(filename, 'a') as file:
+                    with open(filename, 'a', encoding='windows-1251') as file:
                         file.write(f'\n Начало выполнения: {time_1} \n')
                         file.write(f'{func_mame} ok. результат выполнения: \n {result} \n')
-                        file.write(f'Конец выполнения: {time_2}')
+                        file.write(f'Конец выполнения: {time_2} \n')
                 except Exception as e:
                     with open(filename, 'a') as file:
                         file.write(f'\n Начало выполнения: {time_1} \n')
                         file.write(f'{func_mame} error: {e}. Inputs: {*args, *kwargs} \n')
-                        file.write(f'Конец выполнения: {time_2}')
+                        file.write(f'Конец выполнения: {time_2} \n')
             else:
                 try:
                     result = func(*args, **kwargs)
