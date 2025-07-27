@@ -3,6 +3,9 @@ from functools import wraps
 
 
 def log(filename=None):
+    """
+    декоратор для логирования результата функции
+    """
     def wrapper(func):
         @wraps(func)
         def inner(*args, **kwargs):
