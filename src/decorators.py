@@ -22,7 +22,7 @@ def log(filename=None):
                 except Exception as e:
                     with open(filename, 'a') as file:
                         file.write(f'\n Начало выполнения: {time_1} \n')
-                        file.write(f'{func_mame} error: {e}. Inputs: {*args, *kwargs} \n')
+                        file.write(f'{func_mame} error: {e}. Inputs: {*args, }, {dict(*kwargs)}  \n')
                         file.write(f'Конец выполнения: {time_2} \n')
             else:
                 try:
@@ -32,7 +32,7 @@ def log(filename=None):
                     print(f'Конец выполнения: {time_2}')
                 except Exception as e:
                     print(f'Начало выполнения: {time_1}')
-                    print(f'{func_mame} error: {e}. Inputs: {*args, *kwargs}')
+                    print(f'{func_mame} error: {e}. Inputs: {*args, }, {dict(*kwargs)}')
                     print(f'Конец выполнения: {time_2}')
 
         return inner
