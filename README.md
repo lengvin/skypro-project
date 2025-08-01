@@ -49,3 +49,16 @@ from generators import card_number_generator
 for card_number in card_number_generator(1, 5):
     print(card_number)
 ```
+
+## Модуль decorators.py
+
+### Декораток log
+
+Данный декоратор позволяет логировать начало, результат и конец работы функции, пример использования:
+```
+@log(filename='mylog.txt')
+def my_function(a, b):
+    retutn a + b
+
+my_function(1, 2)
+```
