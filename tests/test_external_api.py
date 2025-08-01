@@ -1,6 +1,5 @@
 from unittest.mock import patch
 from src import external_api
-from dotenv import load_dotenv
 import os
 
 

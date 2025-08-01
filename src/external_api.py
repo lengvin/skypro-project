@@ -12,6 +12,9 @@ headers = {
 
 
 def currency_conversion_in_rub(operation):
+    """
+    Конвертация валюты из транзакции в рубли
+    """
     currency = operation['operationAmount']['currency']['code']
     amount = operation['operationAmount']['amount']
 
