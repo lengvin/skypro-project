@@ -12,6 +12,8 @@ def read_json_file(file_path):
         return []
     except TypeError:
         return []
+    except json.JSONDecodeError:
+        return []
     except ValueError:
         return []
     else:
