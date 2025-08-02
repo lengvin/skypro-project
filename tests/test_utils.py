@@ -16,7 +16,8 @@ def test_read_json_file():
 @pytest.mark.parametrize('invalid_data', [
     'data/test.json',
     {},
-    'test'
+    'test',
+    '{}'
 ])
 def test_errors_read_json_file(invalid_data):
     assert utils.read_json_file(invalid_data) == []
