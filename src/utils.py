@@ -8,13 +8,7 @@ def read_json_file(file_path):
     try:
         with open(file_path, encoding='utf-8') as file:
             json_file = json.load(file)
-    except FileNotFoundError:
-        return []
-    except TypeError:
-        return []
-    except json.JSONDecodeError:
-        return []
-    except ValueError:
+    except (FileNotFoundError, TypeError, json.JSONDecodeError, ValueError):
         return []
     else:
         return json_file
