@@ -360,3 +360,41 @@ def descriptions_result():
         'Перевод с карты на карту',
         'Перевод организации'
     ]
+
+
+@pytest.fixture
+def api_answer():
+    return {
+        "date": "2018-02-22",
+        "historical": "",
+        "info": {
+            "rate": 148.972231,
+            "timestamp": 1519328414
+        },
+        "query": {
+            "amount": 25,
+            "from": "GBP",
+            "to": "JPY"
+        },
+        "result": 3724.305775,
+        "success": True
+    }
+
+
+@pytest.fixture
+def api_input():
+    return {
+        "id": 41428829,
+        "state": "EXECUTED",
+        "date": "2019-07-03T18:35:29.512364",
+        "operationAmount": {
+            "amount": "8221.37",
+            "currency": {
+                "name": "USD",
+                "code": "USD"
+            }
+        },
+        "description": "Перевод организации",
+        "from": "MasterCard 7158300734726758",
+        "to": "Счет 35383033474447895560"
+    }
