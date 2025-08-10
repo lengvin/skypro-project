@@ -22,7 +22,7 @@ def card_number_generator(start_num, end_num):
     """
     if len(str(start_num)) <= 16 and len(str(end_num)) <= 16:
         for i in range(start_num, end_num + 1):
-            str_card_numbers = '0' * (16 - len(str(i))) + str(i)
-            yield ' '.join(map(lambda x: str_card_numbers[x * 4: (x + 1) * 4], range(4)))
+            str_card_numbers = "0" * (16 - len(str(i))) + str(i)
+            yield " ".join(map(lambda x: str_card_numbers[x * 4 : (x + 1) * 4], range(4)))
     else:
-        yield 'Некорректные крайние значения'
+        yield "Некорректные крайние значения"

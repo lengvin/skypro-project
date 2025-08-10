@@ -24,7 +24,7 @@ def get_date(full_date: str) -> str:
     получение даты в формате ДД.ММ.ГГГГ
     формат аргумента должен быть: 'ГГГГ-ММ-ДДT(другие данные)'
     """
-    if isinstance(full_date, str) and 'T' in full_date:
+    if isinstance(full_date, str) and "T" in full_date:
         date_parts = full_date.split("T")
 
         if bool(date_parts[0]):
@@ -36,8 +36,8 @@ def get_date(full_date: str) -> str:
 
                 return result
             else:
-                raise ValueError('Аргумент должен начиться с даты в формате ГГГГ-ММ-ДДT')
+                raise ValueError("Аргумент должен начиться с даты в формате ГГГГ-ММ-ДДT")
         else:
-            raise ValueError('Аргумент должен начиться с даты в формате ГГГГ-ММ-ДДT')
+            raise ValueError("Аргумент должен начиться с даты в формате ГГГГ-ММ-ДДT")
     else:
-        raise ValueError('Аргумент должен начиться с даты в формате ГГГГ-ММ-ДДT')
+        raise ValueError("Аргумент должен начиться с даты в формате ГГГГ-ММ-ДДT")
