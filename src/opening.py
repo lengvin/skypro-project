@@ -3,6 +3,9 @@ import pandas as pd
 
 
 def read_csv_file(file_path):
+    """
+    Преобразование CSV файла в Python-объект
+    """
     try:
         result = []
         with open(file_path, encoding='utf-8') as file:
@@ -16,6 +19,9 @@ def read_csv_file(file_path):
 
 
 def read_excel_file(file_path):
+    """
+    Преобразование XLSX файла в Python-объект
+    """
     df = pd.read_excel(file_path)
     result = []
 
