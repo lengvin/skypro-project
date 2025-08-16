@@ -42,7 +42,6 @@ def process_bank_operations(data: list[dict], categories: list) -> dict:
     подсчет количества транзакций по категориям
     """
     descriptions = []
-    unfounded = []
     for transaction in data:
         if transaction.get('description') in categories:
             descriptions.append(transaction.get('description'))
