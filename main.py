@@ -2,6 +2,9 @@ from src import opening, utils, widget, processing, generators
 
 
 def yes_or_no():
+    '''
+    Проверка ответа пользователя
+    '''
     while True:
         user_input = input()
         if user_input.lower() == 'да':
@@ -13,6 +16,9 @@ def yes_or_no():
 
 
 def take_data_from_user():
+    '''
+    Сбор данный пользователя для фильтрации
+    '''
     user_params = {}
     file_extensions = {'1': 'JSON', '2': 'CSV', '3': 'XLSX'}
     params = ['file_extension',
@@ -95,45 +101,48 @@ def take_data_from_user():
 
 
 def main():
+    '''
+    Связь функционала проекта и пользователя
+    '''
     user_sort_params = take_data_from_user()
-    raw_data = []
     result = []
 
     try:
         if user_sort_params['file_extension'] == 'JSON':
-            raw_data = utils.read_json_file(user_sort_params['file_path'])
+            result = utils.read_json_file(user_sort_params['file_path'])
         elif user_sort_params['file_extension'] == 'CSV':
-            raw_data = opening.read_csv_file(user_sort_params['file_path'])
+            result = opening.read_csv_file(user_sort_params['file_path'])
         elif user_sort_params['file_extension'] == 'XLSX':
-            raw_data = opening.read_excel_file(user_sort_params['file_path'])
+            result = opening.read_excel_file(user_sort_params['file_path'])
     except FileNotFoundError:
         print('Файла не существует либо введён некоректный путь до файла')
     else:
-        sorting_list = processing.filter_by_state(raw_data, state=user_sort_params['state_type'])
+        result = processing.filter_by_state(result, state=user_sort_params['state_type'])
 
         if user_sort_params['is_sort_by_date']:
-            sorting_list = processing.sort_by_date(sorting_list, _reverse=not user_sort_params['sort_reverse'])
+            result = processing.sort_by_date(result, _reverse=not user_sort_params['sort_reverse'])
 
         if user_sort_params['sort_word']:
-            sorting_list = processing.process_bank_search(sorting_list, user_sort_params['sort_word'])
+            result = processing.process_bank_search(result, user_sort_params['sort_word'])
 
         if user_sort_params['is_rub_transactions']:
-            rub_transactions = generators.filter_by_currency(sorting_list, 'RUB')
-            for i in range(len(sorting_list)):
+            rub_transactions = generators.filter_by_currency(result, 'RUB')
+            sorting_list = []
+            for i in range(len(result)):
                 try:
-                    result.append(next(rub_transactions))
+                    sorting_list.append(next(rub_transactions))
                 except StopIteration:
                     break
-            sorting_list = result
+            result = sorting_list
 
-        if not sorting_list:
+        if not result:
             print('Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
         else:
-            for transaction in sorting_list:
+            for transaction in result:
                 date = widget.get_date(transaction["date"])
                 description = transaction["description"]
-                from_ = transaction['from']
-                to = transaction['to']
+                from_ = widget.mask_account_card(transaction.get('from'))
+                to = widget.mask_account_card(transaction['to'])
 
                 if transaction.get('operationAmount'):
                     amount = transaction['operationAmount']['amount']
