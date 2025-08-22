@@ -8,8 +8,8 @@ def read_csv_file(file_path):
     """
     try:
         result = []
-        with open(file_path, encoding='utf-8') as file:
-            reader = csv.DictReader(file, delimiter=';')
+        with open(file_path, encoding="utf-8") as file:
+            reader = csv.DictReader(file, delimiter=";")
             for row in reader:
                 result.append(row)
     except (FileNotFoundError, ValueError, TypeError):
@@ -31,7 +31,7 @@ def read_excel_file(file_path):
         for key, value in row.items():
             dict_[key] = value
         try:
-            dict_['id'] = int(dict_['id'])
+            dict_["id"] = int(dict_["id"])
         except ValueError:
             pass
         finally:

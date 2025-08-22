@@ -7,7 +7,7 @@ def filter_by_currency(list_of_transactions, currency):
             if transaction["operationAmount"]["currency"]["code"] == currency:
                 yield transaction
         else:
-            if transaction['currency_code'] == currency:
+            if transaction["currency_code"] == currency:
                 yield transaction
 
 

@@ -9,7 +9,7 @@ def filter_by_state(list_of_data: list, state: str = "EXECUTED") -> list:
     """
     filtered_list = []
     for data in list_of_data:
-        if data.get('state') == state:
+        if data.get("state") == state:
             filtered_list.append(data)
 
     return filtered_list
@@ -31,7 +31,7 @@ def process_bank_search(data: list[dict], search: str) -> list[dict]:
     """
     result = []
     for transaction in data:
-        if re.search(search, transaction.get('description'), flags=re.IGNORECASE):
+        if re.search(search, transaction.get("description"), flags=re.IGNORECASE):
             result.append(transaction)
 
     return result
@@ -43,7 +43,7 @@ def process_bank_operations(data: list[dict], categories: list) -> dict:
     """
     descriptions = []
     for transaction in data:
-        if transaction.get('description') in categories:
-            descriptions.append(transaction.get('description'))
+        if transaction.get("description") in categories:
+            descriptions.append(transaction.get("description"))
 
     return Counter(descriptions)
