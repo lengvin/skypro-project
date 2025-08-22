@@ -9,7 +9,7 @@ def filter_by_state(list_of_data: list, state: str = "EXECUTED") -> list:
     """
     filtered_list = []
     for data in list_of_data:
-        if data["state"] == state:
+        if data.get('state') == state:
             filtered_list.append(data)
 
     return filtered_list

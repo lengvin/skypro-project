@@ -3,8 +3,12 @@ def filter_by_currency(list_of_transactions, currency):
     Итератор, сортирующий транзакции по валюте
     """
     for transaction in list_of_transactions:
-        if transaction["operationAmount"]["currency"]["code"] == currency:
-            yield transaction
+        if transaction.get("operationAmount"):
+            if transaction["operationAmount"]["currency"]["code"] == currency:
+                yield transaction
+        else:
+            if transaction['currency_code'] == currency:
+                yield transaction
 
 
 def transaction_descriptions(list_of_transactions):
